@@ -1,8 +1,7 @@
 from API import get_prediction
 
 # path to trained model
-model_path = r"C:\Users\harsh\OneDrive - Thadomal Shahani Engineering College\Documents\GitHub\Phishing-Attack-Domain-Detection\models\Malicious_URL_Prediction.h5"
-
+model_path = r"C:\Users\ASUS\Desktop\storm_CtrlAltDefeat\Malicious_URL_Prediction.h5"
 # input url
 url = "https://ShoePublic.com"
 lst = ["https://ShoePublic.com", "Pilosaleltd.com", "piloltd.com","AmazonStorePro.com", "Anhbhau.shop","Moziep.com", "Outdoorbest.store", "TiffanyCoShop.com" , "Omitages.com", "Morrity.com"]

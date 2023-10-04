@@ -11,6 +11,9 @@ body {
 @tailwind utilities;
 
 .CircularProgressbar {
-  height: 4rem !important;
+  height: 6rem !important;
   width: 6rem !important;
+}
+.CircularProgressbar-text {
+  font-size: 0.85rem !important;
 }

@@ -67,10 +67,11 @@ const Orders = () => {
     },
   ];
 
+  const alerts = JSON.parse(localStorage.getItem("alerts"));
   return (
     <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl ">
       <Header title="Alerts - Frequently flagged webites" />
-      {alertData.map((item, index) => (
+      {alerts.map((item, index) => (
         <AlertCardList key={index} data={item} />
       ))}
     </div>

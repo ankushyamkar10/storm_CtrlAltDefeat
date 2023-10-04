@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
 import {
   Dashboard,
@@ -78,6 +79,7 @@ const App = () => {
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
 
                 {/* pages  */}
@@ -94,6 +96,7 @@ const App = () => {
           </div>
         </div>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 };

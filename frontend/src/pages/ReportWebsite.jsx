@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useStateContext } from "../contexts/ContextProvider";
+import { toast } from "react-toastify";
 
 const ReportWebsite = () => {
   const [url, setUrl] = useState("");
-  const [reason, setReason] = useState("");
+  const [title, setTitle] = useState("");
   const [categories, setCategories] = useState([]);
-  const [additionalNotes, setAdditionalNotes] = useState("");
+  const [reason, setReason] = useState("");
 
   const handleCategoriesChange = (event) => {
     const selectedCategories = Array.from(
@@ -13,18 +15,25 @@ const ReportWebsite = () => {
     );
     setCategories(selectedCategories);
   };
+  const { currentColor } = useStateContext();
+  const color = `${currentColor}`;
 
   const handleSubmit = () => {
-    // Do something with the submitted data
-    console.log("URL:", url);
-    console.log("Reason:", reason);
-    console.log("Categories:", categories);
-    console.log("Additional Notes:", additionalNotes);
-    // You can add your logic to send this data wherever it needs to go
-    setAdditionalNotes("");
-    setUrl("");
+    const storedArray = JSON.parse(localStorage.getItem("alerts")) || [];
+
+    storedArray.unshift({
+      website_url: url,
+      website_title: title,
+      desc_as_fake_websites_done_by_them: reason,
+    });
+    console.log(storedArray);
+    localStorage.setItem("alerts", JSON.stringify(storedArray));
+
     setReason("");
+    setUrl("");
+    setTitle("");
     setCategories([]);
+    toast.success("Review submitted!");
   };
 
   return (
@@ -33,6 +42,20 @@ const ReportWebsite = () => {
         Report Malicious/Phishing Website
       </h2>
 
+      <div className="mb-4">
+        <label
+          className="block text-gray-700 text-sm font-bold mb-2"
+          htmlFor="reason"
+        >
+          Title
+        </label>
+        <input
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="reason"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -47,21 +70,6 @@ const ReportWebsite = () => {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           required
-        />
-      </div>
-
-      <div className="mb-4">
-        <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="reason"
-        >
-          Why is it being flagged?
-        </label>
-        <textarea
-          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="reason"
-          value={reason}
-          onChange={(e) => setReason(e.target.value)}
         />
       </div>
 
@@ -88,20 +96,21 @@ const ReportWebsite = () => {
       <div className="mb-6">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="additionalNotes"
+          htmlFor="reason"
         >
-          Additional Notes
+          Why is it being flagged?
         </label>
         <textarea
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="additionalNotes"
-          value={additionalNotes}
-          onChange={(e) => setAdditionalNotes(e.target.value)}
+          id="reason"
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
         />
       </div>
 
       <button
-        className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        style={{ backgroundColor: color }}
+        className={`bg-[${color}] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline `}
         onClick={handleSubmit}
       >
         Submit
