@@ -75,13 +75,7 @@ const Feedback = () => {
         />
       </div>
 
-      <button
-        style={{ backgroundColor: color }}
-        className={`bg-[${color}] text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline `}
-        onClick={handleSubmit}
-      >
-        Submit
-      </button>
+      
     </div>
   );
 };

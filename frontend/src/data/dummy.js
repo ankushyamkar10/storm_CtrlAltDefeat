@@ -5,6 +5,8 @@ import {
   AiOutlineAreaChart,
   AiOutlineBarChart,
   AiOutlineStock,
+  AiFillAlert,
+  AiFillBook,
 } from "react-icons/ai";
 import {
   FiShoppingBag,
@@ -14,6 +16,8 @@ import {
   FiCreditCard,
   FiStar,
   FiShoppingCart,
+  FiHome,
+  FiDatabase,
 } from "react-icons/fi";
 import {
   BsKanban,
@@ -25,8 +29,8 @@ import {
 } from "react-icons/bs";
 import { BiColorFill } from "react-icons/bi";
 import { IoMdContacts } from "react-icons/io";
-import { RiContactsLine, RiStockLine } from "react-icons/ri";
-import { MdOutlineSupervisorAccount } from "react-icons/md";
+import { RiContactsLine, RiFileHistoryFill, RiStockLine } from "react-icons/ri";
+import { MdOutlineSupervisorAccount, MdReport } from "react-icons/md";
 import { HiOutlineRefresh } from "react-icons/hi";
 import { TiTick } from "react-icons/ti";
 import { GiLouvrePyramid } from "react-icons/gi";
@@ -513,12 +517,12 @@ export const links = [
     title: "Dashboard",
     links: [
       {
-        name: "dashboard",
-        icon: <FiShoppingBag />,
+        name: "home",
+        icon: <FiHome />,
       },
       {
-        name: "home",
-        icon: <FiShoppingBag />,
+        name: "history",
+        icon: <RiFileHistoryFill />,
       },
     ],
   },
@@ -528,18 +532,18 @@ export const links = [
     links: [
       {
         name: "alerts",
-        icon: <AiOutlineShoppingCart />,
-      },
-      {
-        name: "phishing_education",
-        icon: <IoMdContacts />,
-      },
-      {
-        name: "feedback",
-        icon: <RiContactsLine />,
+        icon: <AiFillAlert />,
       },
       {
         name: "report_website",
+        icon: <MdReport />,
+      },
+      {
+        name: "phishing_education",
+        icon: <AiFillBook />,
+      },
+      {
+        name: "feedback",
         icon: <RiContactsLine />,
       },
     ],

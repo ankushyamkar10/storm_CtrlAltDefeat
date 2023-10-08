@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from tensorflow import keras
-# Import the CORS extension
 from flask_cors import CORS
 
 # Initialize CORS with your Flask app
@@ -16,6 +15,8 @@ model_path = 'Malicious_URL_Prediction.h5'
 
 # Load the model once when the app starts
 model = keras.models.load_model(model_path)
+
+
 
 CORS(app)
 # This function takes the URL and returns a probability value

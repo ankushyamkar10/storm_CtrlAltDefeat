@@ -13,6 +13,7 @@ import Phishing from "../assets/phishing_gif.gif";
 import { useStateContext } from "../contexts/ContextProvider";
 import { toast } from "react-toastify";
 import Typed from "typed.js";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [url, setUrl] = useState("https://");
@@ -28,7 +29,7 @@ const Home = () => {
 
     const options = {
       strings: [
-        "Beign Scammed?",
+        "Being Scammed?",
         "Phish Scan Alert!",
         "Is Link Legit?",
         "Unmask the Links!",
@@ -158,7 +159,7 @@ const Home = () => {
         </div>
       </div>
       {score && (
-        <div className="flex gap-4 flex-col justify-center my-16 w-[50%] mx-auto border border-gray-200 pt-20 pb-8 relative shadow-lg rounded-2xl">
+        <div className="flex gap-4 flex-col justify-center mt-16 mb-8 w-[50%] mx-auto border border-gray-200 pt-20 pb-8 relative shadow-lg rounded-2xl">
           <MdOutlineCancel
             size={30}
             className="absolute top-2 right-2 cursor-pointer"
@@ -233,9 +234,20 @@ const Home = () => {
                 </span>
               </span>
             )}
-            <span></span>
           </div>
         </div>
+      )}
+      {score && (
+        <Link to="/feedback">
+          <div className="mx-auto text-center cursor-pointer">
+            <button
+              style={{ backgroundColor: color }}
+              className={`bg-[${color}] text-white font-semibold py-2 px-4 mx-auto rounded focus:outline-none focus:shadow-outline `}
+            >
+              Give Feedback
+            </button>
+          </div>
+        </Link>
       )}
     </>
   );
